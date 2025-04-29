@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
+use App\Http\Middleware\RoleMiddleware;
 
 
 Route::get('/', function () {
@@ -21,5 +22,10 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('clients', ClientController::class)->middleware(['auth']);
 
+Route::middleware([RoleMiddleware::class . ':admin'])->group(function () {
+    Route::get('/admin', function () {
+        return 'Halaman Admin';
+    });
+});
 
 require __DIR__.'/auth.php';
