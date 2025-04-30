@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('role')->default('client')->after('password'); // admin, freelancer, client
+            $table->enum('role', ['admin', 'freelance', 'client'])->default('client')->after('password');
             $table->string('phone')->nullable()->after('role');
             $table->text('bio')->nullable()->after('phone');
-            $table->string('skills')->nullable()->after('bio'); // bisa comma separated
-            $table->string('profile_photo')->nullable()->after('skills'); // path to profile photo
+            $table->string('skills')->nullable()->after('bio');
+            $table->string('profile_photo')->nullable()->after('skills');
         });
     }
     

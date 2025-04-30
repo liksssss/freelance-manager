@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class FreelancerController extends Controller
+class FreelanceController extends Controller
 {
     public function dashboard()
     {
-        return view('dashboard.freelancer');
+        return view('dashboard.freelance');
     }
 }
